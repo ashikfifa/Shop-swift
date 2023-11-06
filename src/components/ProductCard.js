@@ -26,7 +26,7 @@ export default function App() {
         <MDBRow className="mb-3">
           {items.map((item) => (
             <MDBCol key={item.id} size="md">
-              <MDBCard>
+              <MDBCard style={{minHeight:"400px", maxHeight:"400px"}}>
                 <MDBCardImage src={item.img} position="top" alt="..." />
                 <MDBCardBody>
                   <MDBCardTitle>{item.title}</MDBCardTitle>
