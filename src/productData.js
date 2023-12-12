@@ -34,4 +34,18 @@ export default [
     img: "https://res.cloudinary.com/drecbsopp/image/upload/v1627398698/nokia3_resize_md_qdw7bv.jpg",
     quantity: 1,
   },
+  {
+    id: 6,
+    title: "Apple i phone",
+    price: 4000.0,
+    img: "https://res.cloudinary.com/drecbsopp/image/upload/v1627398698/nokia3_resize_md_qdw7bv.jpg",
+    quantity: 1,
+  },
+  {
+    id: 7,
+    title: "Apple i phone",
+    price: 4000.0,
+    img: "https://res.cloudinary.com/drecbsopp/image/upload/v1627398698/nokia3_resize_md_qdw7bv.jpg",
+    quantity: 1,
+  },
 ];

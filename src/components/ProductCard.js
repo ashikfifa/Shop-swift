@@ -1,17 +1,8 @@
 import React from "react";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-} from "mdb-react-ui-kit";
+
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../features/cartSlice";
+import { Button, Card, CardActions, CardContent, Container, Grid, Typography } from "@mui/material";
 
 export default function App() {
   const items = useSelector((state) => state.allCart.items);
@@ -21,25 +12,29 @@ export default function App() {
   console.log('itemss',items);
 
   return (
-    <div className="m-2">
-      <MDBContainer>
-        <MDBRow className="mb-3">
+    <>
+    <Container fixed>
+    <Grid container spacing={2}>
+    
           {items.map((item) => (
-            <MDBCol key={item.id} size="md">
-              <MDBCard style={{minHeight:"400px", maxHeight:"400px"}}>
-                <MDBCardImage src={item.img} position="top" alt="..." />
-                <MDBCardBody>
-                  <MDBCardTitle>{item.title}</MDBCardTitle>
-                  <MDBCardText>{item.price}</MDBCardText>
-                  <MDBBtn onClick={() => dispatch(addToCart(item))}>
+            <Grid item lg={4}>
+             <Card sx={{ minWidth: 275 }}>
+             <CardContent>
+                <img height="376px" width="330px"  src={item.img} position="top" alt="..." />
+
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>{item.title}</Typography>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>{item.price}</Typography>
+                  <CardActions>
+                  <Button size="large" onClick={() => dispatch(addToCart(item))}>
                     Add to Cart
-                  </MDBBtn>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
+                  </Button>
+                  </CardActions>
+                </CardContent>
+              </Card>
+            </Grid>
           ))}
-        </MDBRow>
-      </MDBContainer>
-    </div>
+          </Grid>
+          </Container>
+       </>
   );
 }

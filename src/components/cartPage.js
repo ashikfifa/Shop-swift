@@ -1,12 +1,27 @@
+import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import {
   getCartTotal,
   removeItem,
   decreaseItemQuantity,
   increaseItemQuantity,
 } from "../features/cartSlice";
+import {
+  Button,
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  TextField,
+  Grid,
+  Paper,
+} from "@mui/material";
+import Container from "@mui/material/Container";
 
 const CartPage = () => {
   const { cart, totalQuantity, totalPrice } = useSelector(
@@ -20,131 +35,127 @@ const CartPage = () => {
   }, [cart]);
 
   return (
-    <div>
-      <section className="h-100 gradient-custom">
-        <div className="container py-5">
-          <div className="row d-flex justify-content-center my-4">
-            <div className="col-md-8">
-              <div className="card mb-4">
-                <div className="card-header py-3">
-                  <h5 className="mb-0">Cart - {cart.length} items</h5>
-                </div>
-                <div className="card-body">
-                  {cart?.map((data) => (
-                    <div className="row">
-                      <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                        <div
-                          className="bg-image hover-overlay hover-zoom ripple rounded"
-                          data-mdb-ripple-color="light"
-                        >
+    <>
+      <Container lg={{ px: 7 }}>
+        <Grid container spacing={2}>
+          <Grid item lg={7}>
+            <Card mb={4}>
+              <CardHeader py={3}>
+                <Typography variant="h5" mb={0}>
+                  Cart - {cart.length} items
+                </Typography>
+              </CardHeader>
+              <CardContent>
+                {cart?.map((data) => (
+                  
+                    <Grid container key={data.id}>
+                      <Grid item lg={3}>
                           <img
                             src={data.img}
-                            className="w-100"
+                            style={{width:"100%"}}
                             alt="Blue Jeans Jacket"
                           />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                        <p>
+                      </Grid>
+                      <Grid item lg={5}>
+                        <Typography variant="subtitle1" mb={2}>
                           <strong>{data.title}</strong>
-                        </p>
+                        </Typography>
 
-                        <button
-                          type="button"
-                          className="btn btn-primary btn-sm me-1 mb-2"
-                          data-mdb-toggle="tooltip"
-                          title="Remove item"
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          size="small"
                           onClick={() => dispatch(removeItem(data.id))}
                         >
-                          <i className="fas fa-trash"></i>
-                        </button>
-                      </div>
-
-                      <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                        <div
-                          className="d-flex mb-4"
-                          style={{ maxWidth: "300px" }}
-                        >
-                          <button
-                            className="btn btn-primary px-3 me-2"
+                          <i className="fas fa-trash"></i> &nbsp; Remove item
+                        </Button>
+                        </Grid>
+                        <Grid item lg={4}>
+                        <div style={{marginTop:"10%",display:"flex", alignItems:"center", gap:"3px"}}>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            size="small"
                             onClick={() =>
                               dispatch(decreaseItemQuantity(data.id))
                             }
                           >
                             <i className="fas fa-minus"></i>
-                          </button>
+                          </Button>
 
-                          <div className="form-outline">
-                            <input
-                              id="form1"
-                              min="0"
-                              name="quantity"
-                              value={data.quantity}
-                              type="number"
-                              className="form-control"
-                              onChange={() => null}
-                            />
-                            <label className="form-label" for="form1">
-                              Quantity
-                            </label>
-                          </div>
+                          <TextField
+                            id={`quantity-${data.id}`}
+                            type="number"
+                            value={data.quantity}
+                            onChange={() => null}
+                            label="Quantity"
+                            variant="outlined"
+                          />
 
-                          <button
-                            className="btn btn-primary px-3 ms-2"
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            size="small"
                             onClick={() =>
                               dispatch(increaseItemQuantity(data.id))
                             }
                           >
                             <i className="fas fa-plus"></i>
-                          </button>
+                          </Button>
                         </div>
 
-                        <p className="text-start text-md-center">
+                        <Typography variant="body1" textAlign="center">
                           <strong>{data.price}</strong>
-                        </p>
-                      </div>
-                      <hr className="my-4" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card mb-4">
-                <div className="card-header py-3">
-                  <h5 className="mb-0">Summary</h5>
-                </div>
-                <div className="card-body">
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                      Total Quantity
-                      <span>{totalQuantity}</span>
-                    </li>
+                        </Typography>
+                      </Grid>
+                     
+                    </Grid>
+                  
+                ))}
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item lg={5}>
+            <Card mb={4}>
+              <CardHeader py={3}>
+                <Typography variant="h5" mb={0}>
+                  Summary
+                </Typography>
+              </CardHeader>
+              <CardContent>
+                <List>
+                  <ListItem>
+                    <ListItemText
+                      primary="Total Quantity"
+                      secondary={<span>{totalQuantity}</span>}
+                    />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText
+                      primary="Total amount"
+                      secondary={
+                        <span>
+                          <strong>{totalPrice}</strong>
+                        </span>
+                      }
+                    />
+                  </ListItem>
+                </List>
 
-                    <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                      <div>
-                        <strong>Total amount</strong>
-                      </div>
-                      <span>
-                        <strong>{totalPrice}</strong>
-                      </span>
-                    </li>
-                  </ul>
-
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-lg btn-block"
-                  >
-                    Go to checkout
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  fullWidth
+                >
+                  Go to checkout
+                </Button>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
+    </>
   );
 };
 
