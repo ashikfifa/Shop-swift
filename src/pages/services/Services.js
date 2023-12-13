@@ -31,16 +31,16 @@ const Services = () => {
       </Container>
 
       <Container fixed>
-        <div className="borderCategoryProduct">
-          <Grid container spacing={2}>
+       
+          <Grid style={{marginTop:"2%"}} container spacing={2}>
             {
               categoryProduct?.map((product) => (
                 <Grid item lg={3} key={product.name}>
-                  {product.name}
+                 <img src={product.img} width="100%"/> {product.name}
                 </Grid>
               ))}
           </Grid>
-        </div>
+        
       </Container>
     </>
   );
