@@ -47,7 +47,7 @@ const Header=()=>{
               >
                 <Tab  component={Link}
     to="/" label="Products" />
-                <Tab label="Services" />
+                <Tab component={Link} label="Services" to="/services" />
                 <Tab label="About Us" />
                 <Tab component={Link}
     to="/cart" label={`Cart (${totalQuantity})`}/>

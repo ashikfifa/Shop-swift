@@ -1,0 +1,20 @@
+.bgColor{
+    width: 100%;
+    margin-top: 2%;
+    height: 100px;
+    background-color: #e31119;
+    color: white;
+    font-size: 30PX;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.borderCategoryProduct{
+    border: 1px solid #e2e2e2;
+    height: 200px;
+    width: 100%;
+    margin: 25px 0px;
+    padding: 20px;
+}
