@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCartTotal } from "./features/cartSlice";
 import Services from "./pages/services/Services";
+import TriCycle from "./pages/TriCycle/TriCycle";
 
 function App() {
   const { cart, totalQuantity } = useSelector((state) => state.allCart);
@@ -20,14 +21,16 @@ function App() {
     <BrowserRouter>
       <div>
         <Header/>
-        <div style={{marginTop:"3%"}}>
+        <div className="navBarTop">
         {/* <Navbar /> */}
-        </div>
+        
         <Routes>
           <Route exact path="/" element={<ProductCard />} />
           <Route exact path="/services" element={<Services />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/tri-cycle" element={<TriCycle/>}/>
         </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );

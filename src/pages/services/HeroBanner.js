@@ -9,7 +9,6 @@ const HeroBanner = () => {
   return (
     <>
       <HeroSlider
-        height={"100vh"}
         autoplay
         controller={{
           initialSlide: 1,

@@ -18,3 +18,16 @@
     margin: 25px 0px;
     padding: 20px;
 }
+
+.imgList{
+    transition: all 150ms;
+    cursor: pointer;
+}
+
+.imgList:hover{
+    transform: scale(1.07);
+}
+
+.nameFont{
+    font-size: 14px;
+}
