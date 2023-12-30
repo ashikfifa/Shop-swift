@@ -7,4 +7,20 @@
     .subTitle{
         font-size: 13px;
     }
+    .colorBack{
+        background-color: #e2e2e2;
+    }
+    .headerDiv{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .headerDiv2{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+        padding: 3.5px 14px;
+    }
 }

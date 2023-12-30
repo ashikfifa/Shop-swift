@@ -21,3 +21,43 @@ export const Categorydata=[
     }
     
 ]
+
+
+export const BabyProduct=[
+    {
+        id: 1,
+        img:'https://rflbestbuy.com/images/thumbnails/240/240/detailed/136/smile-1-.jpg',
+        name:'Smile Baby Walker Melody - Cyan Blue & White',
+        price:2500,
+        quantity: 1,
+    },
+    {
+        id: 2,
+        img:'https://rflbestbuy.com/images/thumbnails/240/240/detailed/136/mickey.-2-jpg.jpg',
+        name:'Micky Walker - Cyan Blue & White',
+        price:1200,
+        quantity: 1,
+    },
+    {
+        id: 3,
+        img:'https://rflbestbuy.com/images/thumbnails/240/240/detailed/136/happy.jpg',
+        name:'Happy Walker - Cyan Blue & White',
+        price:950,
+        quantity: 1,
+    },
+    {
+        id: 4,
+        img:'https://rflbestbuy.com/images/thumbnails/240/240/detailed/155/smart-walker_r0s2-bm.jpg',
+        name:'Smile Baby Walker - Cyan Blue & White',
+        price:3200,
+        quantity: 1,
+    },
+    {
+        id: 5,
+        img:'https://rflbestbuy.com/images/thumbnails/240/240/detailed/136/smile.jpg',
+        name:'Playtime  Smart Baby Walker',
+        price:2300,
+        quantity: 1,
+    }
+    
+]

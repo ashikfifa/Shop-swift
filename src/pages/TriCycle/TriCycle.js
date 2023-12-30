@@ -1,13 +1,57 @@
-import { FormControl, FormControlLabel, Grid, Radio, RadioGroup } from "@mui/material";
+import {
+  FormControl,
+  FormControlLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+  Select,
+} from "@mui/material";
 import "./triCycle.scss";
-import { useState } from "react";
+import sortIcon from "../../svgs/sortIcon.svg";
+import fullViewIcon from "../../svgs/fullViewIcon.svg";
+import descViewIcon from "../../svgs/descViewIcon.svg";
+import listViewIcon from "../../svgs/listViewIcon.svg";
+import cartIcon from "../../svgs/cart.svg";
+import { useEffect, useState } from "react";
+import Card from "../../components/Card/Card";
+import { BabyProduct } from "../../mockData/mockData";
+import { useSelector } from "react-redux";
 const TriCycle = () => {
+  const [selectedValue, setSelectedValue] = useState("Walker & swing car");
+  const [babyProduct, setBabyProduct] = useState([]);
+  const [valueRating, setValueRating] = useState(2);
+  const [state, setState] = useState({
+    age: "",
+    name: "hai",
+  });
 
-    const [selectedValue, setSelectedValue] = useState('Walker & swing car');
+  const items = useSelector((state) => state.allCart.items);
 
-    const handleRadioChange = (event) => {
-        setSelectedValue(event.target.value);
-      };
+  console.log('itemss',items);
+  const handleRadioChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    setState({
+      ...state,
+      [name]: event.target.value,
+    });
+  };
+
+  const babyProductList = () => {
+    try {
+      // const result = await  BabyProduct();
+      setBabyProduct(BabyProduct);
+    } catch (error) {
+      console.error("Error fetching baby products:", error);
+    }
+  };
+
+  useEffect(() => {
+    babyProductList();
+  }, []);
 
   return (
     <div className="container">
@@ -19,9 +63,9 @@ const TriCycle = () => {
         </span>
 
         <div className="hrT"></div>
-
+        <div style={{ marginTop: "3%" }}></div>
         <Grid container spacing={2}>
-          <Grid item lg={3}>
+          <Grid className="colorBack" item lg={3}>
             <FormControl>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
@@ -44,8 +88,66 @@ const TriCycle = () => {
           </Grid>
 
           <Grid item lg={9}>
-          {selectedValue === 'Walker & swing car' && <div>b</div>}
-        {selectedValue === 'Tricycle' && <div>c</div>}
+            <div className="headerDiv">
+              <div className="headerDiv2">
+                <div style={{ paddingTop: "5px" }}>
+                  <img src={sortIcon} alt="sort icon" />
+                </div>
+
+                <div>Sort By</div>
+
+                <div>
+                  <Select
+                    native
+                    value={state.age}
+                    onChange={handleChange}
+                    inputProps={{
+                      name: "age",
+                      id: "age-native-simple",
+                    }}
+                  >
+                    <option value="" disabled>
+                      Popular First
+                    </option>
+                    <option value={10}>Newest Item First</option>
+                    <option value={20}>Position: Low to High</option>
+                    <option value={30}>Position: High to Low</option>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="headerDiv2">
+                <div>
+                  <img src={fullViewIcon} alt="full view icon" />
+                </div>
+                <div>
+                  <img src={descViewIcon} alt="desc view icon" />
+                </div>
+                <div>
+                  <img src={listViewIcon} alt="list view icon" />
+                </div>
+              </div>
+            </div>
+
+            <div style={{ padding: "3% 0%" }}>
+              {selectedValue === "Walker & swing car" && (
+                <Grid container spacing={2}>
+                  {items.map((babyProductIndex) => (
+                    <Grid item lg={3}>
+                      <Card
+                        image={babyProductIndex.img}
+                        item={babyProductIndex}
+                        cartIcon={cartIcon}
+                        foter={babyProductIndex.name}
+                        valueRating={valueRating}
+                        price={babyProductIndex.price}
+                      />
+                    </Grid>
+                  ))}
+                </Grid>
+              )}
+              {selectedValue === "Tricycle" && <div>asas</div>}
+            </div>
           </Grid>
         </Grid>
       </div>
