@@ -31,7 +31,10 @@ const Services = () => {
 
   return (
     <>
-      <HeroBanner />
+    <div style={{marginTop:"-2%"}}>
+    <HeroBanner />
+    </div>
+      
 
       <div className="container">
         <Grid container spacing={2}>

@@ -14,7 +14,7 @@ import listViewIcon from "../../svgs/listViewIcon.svg";
 import cartIcon from "../../svgs/cart.svg";
 import { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
-import { BabyProduct } from "../../mockData/mockData";
+import { BabyProduct, BabyProductTriCycle } from "../../mockData/mockData";
 import { useSelector } from "react-redux";
 const TriCycle = () => {
   const [selectedValue, setSelectedValue] = useState("Walker & swing car");
@@ -65,8 +65,8 @@ const TriCycle = () => {
         <div className="hrT"></div>
         <div style={{ marginTop: "3%" }}></div>
         <Grid container spacing={2}>
-          <Grid className="colorBack" item lg={3}>
-            <FormControl>
+          <Grid item lg={3}>
+            <FormControl  className="colorBack">
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="Walker & swing car"
@@ -85,6 +85,10 @@ const TriCycle = () => {
                 />
               </RadioGroup>
             </FormControl>
+
+            <p className="productTitle">Product filters</p>
+
+            <div className="hrT" style={{width:"73%"}}></div>
           </Grid>
 
           <Grid item lg={9}>
@@ -132,7 +136,7 @@ const TriCycle = () => {
             <div style={{ padding: "3% 0%" }}>
               {selectedValue === "Walker & swing car" && (
                 <Grid container spacing={2}>
-                  {items.map((babyProductIndex) => (
+                  {BabyProduct.map((babyProductIndex) => (
                     <Grid item lg={3}>
                       <Card
                         image={babyProductIndex.img}
@@ -146,7 +150,23 @@ const TriCycle = () => {
                   ))}
                 </Grid>
               )}
-              {selectedValue === "Tricycle" && <div>asas</div>}
+              {selectedValue === "Tricycle" && (
+                <Grid container spacing={2}>
+                  {BabyProductTriCycle.map((BabyProductTriCycleIndex)=>
+                  <Grid item lg={3}>
+                    <Card
+                        image={BabyProductTriCycleIndex.img}
+                        item={BabyProductTriCycleIndex}
+                        cartIcon={cartIcon}
+                        foter={BabyProductTriCycleIndex.name}
+                        valueRating={valueRating}
+                        price={BabyProductTriCycleIndex.price}
+                      />
+                    </Grid>
+                  )}
+                
+                  </Grid>
+              )}
             </div>
           </Grid>
         </Grid>

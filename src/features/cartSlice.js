@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import productData from "../productData";
-import { BabyProduct } from "../mockData/mockData";
+import { BabyProduct, BabyProductTriCycle } from "../mockData/mockData";
 
 const initialState = {
   cart: [],
-  items: BabyProduct,
+  items: [...BabyProduct,...productData,...BabyProductTriCycle],
   totalQuantity: 0,
   totalPrice: 0,
 };

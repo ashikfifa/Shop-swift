@@ -1,22 +1,20 @@
 import React from "react";
-
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../features/cartSlice";
 import { Button, Card, CardActions, CardContent, Container, Grid, Typography } from "@mui/material";
+import productData from "../productData";
 
 export default function App() {
   const items = useSelector((state) => state.allCart.items);
 
   const dispatch = useDispatch();
 
-  
-
   return (
     <>
     <Container fixed>
     <Grid container spacing={2}>
     
-          {items.map((item) => (
+          {productData.map((item) => (
             <Grid item lg={4}>
              <Card sx={{ minWidth: 275 }}>
              <CardContent>

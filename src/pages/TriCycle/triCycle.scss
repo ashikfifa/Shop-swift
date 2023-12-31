@@ -1,5 +1,4 @@
 .triCycleParent{
-    padding-top: 8%;
     .title{
         font-size: 22px;
         font-weight: 900;
@@ -9,6 +8,7 @@
     }
     .colorBack{
         background-color: #e2e2e2;
+        padding: 8%;
     }
     .headerDiv{
         display: flex;
@@ -22,5 +22,9 @@
     }
     .css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
         padding: 3.5px 14px;
+    }
+    .productTitle{
+        font-size: 15px;
+        padding-top: 6%;
     }
 }

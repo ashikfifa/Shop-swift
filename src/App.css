@@ -11,6 +11,10 @@
   margin-top: 6px;
 }
 
+.navBarTop{
+  margin-top: 6%;
+}
+
 @media (max-width: 768px) {
   .navBarTop{
     margin-top: 14%;
