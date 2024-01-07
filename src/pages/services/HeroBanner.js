@@ -12,7 +12,7 @@ const HeroBanner = () => {
         autoplay
         controller={{
           initialSlide: 1,
-          slidingDuration: 500,
+          slidingDuration: 50,
           slidingDelay: 100,
           onSliding: (nextSlide) =>
             console.debug("onSliding(nextSlide): ", nextSlide),

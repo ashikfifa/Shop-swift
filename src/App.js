@@ -25,8 +25,8 @@ function App() {
         {/* <Navbar /> */}
         
         <Routes>
-          <Route exact path="/" element={<ProductCard />} />
-          <Route exact path="/services" element={<Services />} />
+          <Route exact path="/" element={<Services />} />
+          <Route exact path="/services" element={<ProductCard />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/tri-cycle" element={<TriCycle/>}/>
         </Routes>
