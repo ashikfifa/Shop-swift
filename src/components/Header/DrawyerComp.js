@@ -8,9 +8,31 @@ import {
   ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-const pages = ["Products", "Services", "ABoutUs", "ContactUs"];
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const DrawerComp = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const navigate=useNavigate()
+
+  const { totalQuantity } = useSelector(
+    (state) => state.allCart
+  );
+  const pages = ["Products", "Services", "ABoutUs", `Cart (${totalQuantity})` ];
+
+  const handleDrawerItemClick = (pageText) => {
+
+    if(pageText=='Products'){
+      navigate('/')
+    }
+    else if(pageText=='Services'){
+      navigate('/services')
+    }
+    else if(pageText=='Cart'){
+      navigate('/cart')
+    }
+    setOpenDrawer(false);
+  };
 
   return (
     <React.Fragment>
@@ -20,10 +42,10 @@ const DrawerComp = () => {
         onClose={() => setOpenDrawer(false)}
       >
         <List>
-          {pages.map((page, index) => (
-            <ListItemButton key={index}>
+          {pages.map((pageText, index) => (
+            <ListItemButton key={index} onClick={() => handleDrawerItemClick(pageText)}>
               <ListItemIcon>
-                <ListItemText>{page}</ListItemText>
+                <ListItemText>{pageText}</ListItemText>
               </ListItemIcon>
             </ListItemButton>
           ))}

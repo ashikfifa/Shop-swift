@@ -27,7 +27,7 @@ export const BabyProduct=[
     {
         id: 8,
         img:'https://rflbestbuy.com/images/thumbnails/240/240/detailed/136/smile-1-.jpg',
-        name:'Smile Baby Walker Melody - Cyan Blue & White',
+        name:'Smile Baby Walker Melody',
         price:2500,
         quantity: 1,
     },

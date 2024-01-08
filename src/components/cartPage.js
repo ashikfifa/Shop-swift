@@ -46,83 +46,91 @@ const CartPage = () => {
                 </Typography>
               </CardHeader>
               <CardContent>
-                {cart?.map((data) => (
-                  
-                    <Grid container key={data.id}>
-                      <Grid item lg={3}>
+                {cart.length == 0 ? (
+                  <>You need to add product</>
+                ) : (
+                  <>
+                    {cart?.map((data) => (
+                      <Grid container key={data.id}>
+                        <Grid item lg={3}>
                           <img
                             src={data.img}
-                            style={{width:"100%"}}
+                            style={{ width: "100%" }}
                             alt="Blue Jeans Jacket"
                           />
-                      </Grid>
-                      <Grid item lg={5}>
-                        <Typography variant="subtitle1" mb={2}>
-                          <strong>{data.title}</strong>
-                        </Typography>
+                        </Grid>
+                        <Grid item lg={5}>
+                          <Typography variant="subtitle1" mb={2}>
+                            <strong>{data.title}</strong>
+                          </Typography>
 
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          size="small"
-                          onClick={() => dispatch(removeItem(data.id))}
-                        >
-                          <i className="fas fa-trash"></i> &nbsp; Remove item
-                        </Button>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            size="small"
+                            onClick={() => dispatch(removeItem(data.id))}
+                          >
+                            <i className="fas fa-trash"></i> &nbsp; Remove item
+                          </Button>
                         </Grid>
                         <Grid item lg={4}>
-                        <div style={{marginTop:"10%",display:"flex", alignItems:"center", gap:"3px"}}>
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            size="small"
-                            onClick={() =>
-                              dispatch(decreaseItemQuantity(data.id))
-                            }
+                          <div
+                            style={{
+                              marginTop: "10%",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "3px",
+                            }}
                           >
-                            <i className="fas fa-minus"></i>
-                          </Button>
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              size="small"
+                              onClick={() =>
+                                dispatch(decreaseItemQuantity(data.id))
+                              }
+                            >
+                              <i className="fas fa-minus"></i>
+                            </Button>
 
-                          <TextField
-                            id={`quantity-${data.id}`}
-                            type="number"
-                            value={data.quantity}
-                            onChange={() => null}
-                            label="Quantity"
-                            variant="outlined"
-                          />
+                            <TextField
+                              id={`quantity-${data.id}`}
+                              type="number"
+                              value={data.quantity}
+                              onChange={() => null}
+                              label="Quantity"
+                              variant="outlined"
+                            />
 
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            size="small"
-                            onClick={() =>
-                              dispatch(increaseItemQuantity(data.id))
-                            }
-                          >
-                            <i className="fas fa-plus"></i>
-                          </Button>
-                        </div>
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              size="small"
+                              onClick={() =>
+                                dispatch(increaseItemQuantity(data.id))
+                              }
+                            >
+                              <i className="fas fa-plus"></i>
+                            </Button>
+                          </div>
 
-                        <Typography variant="body1" textAlign="center">
-                          <strong>{data.price}</strong>
-                        </Typography>
+                          <Typography variant="body1" textAlign="center">
+                            <strong>{data.price}</strong>
+                          </Typography>
+                        </Grid>
                       </Grid>
-                     
-                    </Grid>
-                  
-                ))}
+                    ))}
+                  </>
+                )}
               </CardContent>
             </Card>
           </Grid>
           <Grid item lg={5}>
             <Card mb={4}>
-              <CardHeader py={3}>
+              <CardContent>
                 <Typography variant="h5" mb={0}>
                   Summary
                 </Typography>
-              </CardHeader>
-              <CardContent>
                 <List>
                   <ListItem>
                     <ListItemText
