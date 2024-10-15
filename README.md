@@ -2,4 +2,4 @@ This is a [React.js](https://reactjs.org/) project bootstrapped with [`create-re
 
 ## Getting Started
 
-[DEMO](https://rflbestbuyshop.netlify.app/)
+<a href="https://rflbestbuyshop.netlify.app/" target="_blank">DEMO</a>
